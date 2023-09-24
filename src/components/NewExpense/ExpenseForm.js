@@ -26,38 +26,27 @@ const ExpenseForm = (props) => {
     //also, sometimes react schedules updating of the state, and in some scenarios this above example would not work. Solution is
     // to provide function as a parameter of setter :
 
-    setUserInput((previousState) => {
-      return { ...previousState, title: event.target.value };
-    });
+    // setUserInput((previousState) => {
+    //   return { ...previousState, title: event.target.value };
+    // });
   };
 
   const amountChangeHandler = (event) => {
     setAmount(event.target.value);
-
-    // setUserInput({
-    //   ...userInput,
-    //   amount: event.target.value
-    // });
   };
 
   const dateChangeHandler = (event) => {
     setDate(event.target.value);
-
-    // setUserInput({
-    //   ...userInput,
-    //   date: event.target.value
-    // });
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
 
     const expenseData = {
-      expenseTitle: title,
-      expenseAmount: amount,
-      expenseDate: new Date(date),
+      title: title,
+      amount: amount,
+      date: new Date(date),
     };
-
     props.onSaveExpenseData(expenseData);
 
     setTitle('');
